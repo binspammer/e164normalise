@@ -1,0 +1,72 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "normalise",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/normalise 7789977766 UK",
+            // "command": "${workspaceFolder}/build/normalise 07789977766 UK",
+            // "command": "${workspaceFolder}/build/normalise 00447789977766 UK",
+            // "command": "${workspaceFolder}/build/normalise '(+44)7789977766' UK",
+            // "command": "${workspaceFolder}/build/normalise 1201 UK",
+            "dependsOn" : "C/C++: ninja",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "normalise_unittest",
+            "type": "shell",
+            "command": "${workspaceFolder}/build/normalise_unittest",
+            "dependsOn" : "C/C++: ninja",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: g++ build active file",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-std=c++23",
+                "-O2",
+                "-Wall",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "isDefault": true,
+                "kind": "build"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: ninja",
+            "command": "ninja",
+            "args": [
+                "-C",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "isDefault": true,
+                "kind": "build"
+            }
+        }
+    ]
+}
