@@ -19,8 +19,9 @@ git clone https://github.com/binspammer/e164normalise.git
 ### Build
 ```
 $ cd e164normalise
-$ cmake -C build
-$ ninja -C build
+$ mkdir build && cd build
+$ cmake -S ..
+$ cmake --build .
 ```
 
 ### Run Unit Tests
